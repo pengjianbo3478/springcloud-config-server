@@ -1,0 +1,23 @@
+./consul agent -dev -ui -node=consul-dev -client=192.168.232.128
+
+http://192.168.232.128:8500/ui/#/dc1/services
+
+
+systemctl status firewalld
+
+yum install -y iptables-services
+
+systemctl start iptables
+
+iptables -I INPUT -p tcp --dport 1111 -m state --state NEW -j ACCEPT
+
+systemctl enable iptables.service
+
+
+http://192.168.232.128:8080/springcloudDemo/default
+
+
+http://192.168.1.6:1111/springcloudDemo/default
+
+
+vim /usr/lib/systemd/system/consul.service 
