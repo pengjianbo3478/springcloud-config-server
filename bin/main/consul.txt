@@ -21,3 +21,5 @@ http://192.168.1.6:1111/springcloudDemo/default
 
 
 vim /usr/lib/systemd/system/consul.service 
+
+java -jar config-server.jar
