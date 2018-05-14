@@ -23,3 +23,43 @@ http://192.168.1.6:1111/springcloudDemo/default
 vim /usr/lib/systemd/system/consul.service 
 
 java -jar config-server.jar
+
+
+lsof -i:3690  
+
+svnserve -d -r /svn/svnserver/
+
+
+ps -ef |grep svn              //查看svn启动进程
+
+ lsof -i:3690                    //查看svn启动端口，默认就是3690端口
+ 
+停止firewall
+systemctl stop firewalld.service
+ 
+禁止firewall开机启动
+systemctl disable firewalld.service
+ 
+查看已经开放的端口：
+firewall-cmd --list-ports
+
+svnserve -d -r /opt/svn/svnserver
+
+
+在centos7中增加脚本有两种常用的方法，以脚本autostart.sh为例：
+
+#!/bin/bash
+#description:开机自启脚本
+/usr/local/tomcat/bin/startup.sh  #启动tomcat
+
+1、赋予脚本可执行权限（/opt/script/autostart.sh是你的脚本路径）
+
+chmod +x /opt/script/autostart.sh 
+
+2、打开/etc/rc.d/rc/local文件，在末尾增加如下内容
+
+/opt/script/autostart.sh 
+
+3、在centos7中，/etc/rc.d/rc.local的权限被降低了，所以需要执行如下命令赋予其可执行权限
+
+chmod +x /etc/rc.d/rc.local
